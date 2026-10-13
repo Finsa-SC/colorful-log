@@ -1,7 +1,14 @@
 [project]
 name = "colorful-log"
 version = "0.1.0"
-description = "Add your description here"
+description = "tools that allow you to manipulate the style of the string"
 readme = "README.md"
+authors = [
+    { name = "Finsa-SC", email = "finsakusumaputra@gmail.com" }
+]
 requires-python = ">=3.11"
 dependencies = []
+
+[build-system]
+requires = ["uv_build>=0.11.18,<0.12.0"]
+build-backend = "uv_build"
