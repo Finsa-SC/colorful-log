@@ -23,7 +23,7 @@ class PrintLog(PrintLogEngine):
         if other.startswith('#'):
             self.__text_color = self.hex_to_rgb(other)
         else:
-            self.__text_color = self.__set_text(other)
+            self.__text_color = self._set_text(other)
         return self
 
     def __add__(self, other) -> "PrintLog":
@@ -35,7 +35,7 @@ class PrintLog(PrintLogEngine):
         if color.startswith("#"):
             self.__text_color = self.hex_to_rgb(color)
         else:
-            self.__text_color = self.__set_text(color)
+            self.__text_color = self._set_text(color)
 
         return self
 
@@ -43,16 +43,10 @@ class PrintLog(PrintLogEngine):
         if color.startswith("#"):
             self.__background_color = self.hex_to_rgb(color, background=True)
         else:
-            self.__background_color = self.__set_back(color)
+            self.__background_color = self._set_back(color)
         return self
 
     def reset(self) -> "PrintLog":
         self.__text_color = self.__palette.RESET
         self.__background_color = self.__palette.RESET
         return self
-
-if __name__ == "__main__":
-    agus = PrintLog("Hello Agus!")
-    print(agus | "#fff11f")
-    print(agus.background("#1ff11f"))
-    print(agus + " Apa kabar?")

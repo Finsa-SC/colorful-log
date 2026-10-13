@@ -1,10 +1,10 @@
 class PrintLogEngine:
     @staticmethod
-    def __set_text(num: str) -> str:
+    def _set_text(num: str) -> str:
         return f"\033[3{num}m"
 
     @staticmethod
-    def __set_back(num: str) -> str:
+    def _set_back(num: str) -> str:
         return f"\033[4{num}m"
 
     @staticmethod
