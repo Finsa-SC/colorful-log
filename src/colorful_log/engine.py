@@ -1,3 +1,7 @@
+import re
+from re import fullmatch
+
+
 class PrintLogEngine:
     @staticmethod
     def _set_text(num: str) -> str:
@@ -9,6 +13,12 @@ class PrintLogEngine:
 
     @staticmethod
     def hex_to_rgb(hex_color: str, background: bool = False) -> str:
+        if not fullmatch(r"#[0-9a-fA-F]{6}]", hex_color)
+            raise ValueError(
+                f"Invalid HEX color: {hex_color!r}. "
+                "Expected format: '#RRGGBB'."
+            )
+
         hex_color = hex_color.lstrip('#')
 
         if len(hex_color) != 6:
