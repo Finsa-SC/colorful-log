@@ -7,10 +7,11 @@ class PrintLog(PrintLogEngine, StylesAPI):
     def __init__(self, text: str = ""):
         super().__init__("")
         self._palette          = Colors
-        self.text               = text
+        self.text              = text
         self._text_color       = ""
         self._background_color = ""
         self._text_style       = ""
+        self._prefix           = ""
 
     """Dunder"""
     def __str__(self) -> str:
@@ -18,6 +19,7 @@ class PrintLog(PrintLogEngine, StylesAPI):
             f"{self._background_color}"
             f"{self._text_color}"
             f"{self._text_style}"
+            f"{self._prefix}"
             f"{self.text}"
             f"\033[0m"
         )
@@ -65,3 +67,7 @@ class PrintLog(PrintLogEngine, StylesAPI):
 
     def copy(self) -> "PrintLog":
         return copy(self)
+
+    def prefix(self, prefix: str) -> "PrintLog":
+        self._prefix = prefix
+        return self
