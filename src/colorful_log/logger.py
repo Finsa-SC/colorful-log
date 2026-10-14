@@ -1,52 +1,59 @@
 from colorful_log.engine import PrintLogEngine
 from colorful_log.colors import Colors
+from colorful_log.styles import StylesAPI
 
-class PrintLog(PrintLogEngine):
+class PrintLog(PrintLogEngine, StylesAPI):
     def __init__(self, text: str):
-        super().__init__()
-        self.__palette          = Colors
+        super().__init__("")
+        self._palette          = Colors
         self.text               = text
-        self.__text_color       = self.__palette.RESET
-        self.__background_color = self.__palette.RESET
-
+        self._text_color       = self._palette.RESET
+        self._background_color = self._palette.RESET
+        self._text_style       = ""
 
     """Dunder"""
     def __str__(self) -> str:
         return (
-            f"{self.__background_color}"
-            f"{self.__text_color}"
+            f"{self._background_color}"
+            f"{self._text_color}"
+            f"{self._text_style}"
             f"{self.text}"
-            f"{self.__palette.RESET}"
+            f"{self._palette.RESET}"
         )
 
     def __or__(self, other: str) -> "PrintLog":
         if other.startswith('#'):
-            self.__text_color = self.hex_to_rgb(other)
+            self._text_color = self.hex_to_rgb(other)
         else:
-            self.__text_color = self._set_text(other)
+            self._text_color = self._set_text(other)
         return self
 
     def __add__(self, other) -> "PrintLog":
         self.text += other
         return self
 
+    def __call__(self, text: str):
+        self.text = text
+        return self
+
     """API"""
+    ## Foreground and Background colors
     def color(self, color: str) -> "PrintLog":
         if color.startswith("#"):
-            self.__text_color = self.hex_to_rgb(color)
+            self._text_color = self.hex_to_rgb(color)
         else:
-            self.__text_color = self._set_text(color)
+            self._text_color = self._set_text(color)
 
         return self
 
     def background(self, color: str) -> "PrintLog":
         if color.startswith("#"):
-            self.__background_color = self.hex_to_rgb(color, background=True)
+            self._background_color = self.hex_to_rgb(color, background=True)
         else:
-            self.__background_color = self._set_back(color)
+            self._background_color = self._set_back(color)
         return self
 
     def reset(self) -> "PrintLog":
-        self.__text_color = self.__palette.RESET
-        self.__background_color = self.__palette.RESET
+        self._text_color = self._palette.RESET
+        self._background_color = self._palette.RESET
         return self

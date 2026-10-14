@@ -23,4 +23,3 @@ class Colors(metaclass=ColorsMeta):
     CYAN = "6"
     WHITE = "7"
     RESET = "\033[0m"
-
