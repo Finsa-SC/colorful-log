@@ -57,3 +57,7 @@ class PrintLog(PrintLogEngine, StylesAPI):
         self._text_color = self._palette.RESET
         self._background_color = self._palette.RESET
         return self
+
+    @property
+    def plain(self) -> str:
+        return self.text
