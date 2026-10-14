@@ -22,4 +22,4 @@ class Colors(metaclass=ColorsMeta):
     MAGENTA = "5"
     CYAN = "6"
     WHITE = "7"
-    RESET = "\033[0m"
+    RESET = "9"
