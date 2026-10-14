@@ -11,7 +11,7 @@ class PrintLogEngine:
     def hex_to_rgb(hex_color: str, background: bool = False) -> str:
         hex_color = hex_color.lstrip('#')
 
-        if len(hex_color) < 6:
+        if len(hex_color) != 6:
             raise ValueError("HEX color must contain 6 digits.")
 
         r = int(hex_color[0:2], 16)
