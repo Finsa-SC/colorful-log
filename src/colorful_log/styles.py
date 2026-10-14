@@ -7,6 +7,7 @@ class Styles:
     UNDERLINE = "\033[4m"
     REVERSE = "\033[7m"
     STRIKETHROUGH = "\033[9m"
+    RESET = "\033[22m\033[23m\033[24m\033[27m\033[29m"
 
 class StylesAPI:
     def __init__(self, text_style: str):
@@ -35,4 +36,8 @@ class StylesAPI:
 
     def strikethrough(self) -> Self:
         self._text_style += self._styles.STRIKETHROUGH
+        return self
+
+    def reset_style(self) -> Self:
+        self._text_style = self._styles.RESET
         return self
