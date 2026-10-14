@@ -3,7 +3,7 @@ from colorful_log.colors import Colors
 from colorful_log.styles import StylesAPI
 
 class PrintLog(PrintLogEngine, StylesAPI):
-    def __init__(self, text: str):
+    def __init__(self, text: str = ""):
         super().__init__("")
         self._palette          = Colors
         self.text               = text

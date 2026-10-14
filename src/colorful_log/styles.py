@@ -33,6 +33,6 @@ class StylesAPI:
         self._text_style += self._styles.DIM
         return self
 
-    def strikethrough(self) -> "PrintLog":
+    def strikethrough(self) -> Self:
         self._text_style += self._styles.STRIKETHROUGH
         return self
