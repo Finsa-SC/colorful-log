@@ -8,8 +8,8 @@ class PrintLog(PrintLogEngine, StylesAPI):
         super().__init__("")
         self._palette          = Colors
         self.text               = text
-        self._text_color       = self._palette.RESET
-        self._background_color = self._palette.RESET
+        self._text_color       = ""
+        self._background_color = ""
         self._text_style       = ""
 
     """Dunder"""
@@ -19,7 +19,7 @@ class PrintLog(PrintLogEngine, StylesAPI):
             f"{self._text_color}"
             f"{self._text_style}"
             f"{self.text}"
-            f"{self._palette.RESET}"
+            f"\033[0m"
         )
 
     def __or__(self, other: str) -> "PrintLog":
