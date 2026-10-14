@@ -4,10 +4,14 @@ import re
 class PrintLogEngine:
     @staticmethod
     def _set_text(num: str) -> str:
+        if num.startswith("\033"):
+            return num
         return f"\033[3{num}m"
 
     @staticmethod
     def _set_back(num: str) -> str:
+        if num.startswith("\033"):
+            return num
         return f"\033[4{num}m"
 
     @staticmethod
