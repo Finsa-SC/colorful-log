@@ -1,6 +1,7 @@
 from colorful_log.engine import PrintLogEngine
 from colorful_log.colors import Colors
 from colorful_log.styles import StylesAPI
+from copy import copy
 
 class PrintLog(PrintLogEngine, StylesAPI):
     def __init__(self, text: str = ""):
@@ -61,3 +62,6 @@ class PrintLog(PrintLogEngine, StylesAPI):
     @property
     def plain(self) -> str:
         return self.text
+
+    def copy(self) -> "PrintLog":
+        return copy(self)
