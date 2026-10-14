@@ -1,5 +1,4 @@
 import re
-from re import fullmatch
 
 
 class PrintLogEngine:
@@ -13,7 +12,7 @@ class PrintLogEngine:
 
     @staticmethod
     def hex_to_rgb(hex_color: str, background: bool = False) -> str:
-        if not fullmatch(r"#[0-9a-fA-F]{6}]", hex_color)
+        if not re.fullmatch(r"#[0-9a-fA-F]{6}]", hex_color):
             raise ValueError(
                 f"Invalid HEX color: {hex_color!r}. "
                 "Expected format: '#RRGGBB'."
