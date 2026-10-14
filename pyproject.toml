@@ -1,6 +1,6 @@
 [project]
 name = "colorful-log"
-version = "0.2.0"
+version = "0.3.0"
 description = "tools that allow you to manipulate the style of the string"
 readme = "README.md"
 authors = [
